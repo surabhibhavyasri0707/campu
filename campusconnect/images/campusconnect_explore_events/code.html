@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusConnect - Find Your Next Campus Event</title>
+<!-- Tailwind CSS v3 with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars">
+    /* Subtle custom scrollbar for horizontal filter chips */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans antialiased selection:bg-brand-500 selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-40 w-full border-b border-slate-200/80 bg-white/90 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between py-4">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2.5 group transition-transform duration-200" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-all">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900">
+          Campus<span class="text-brand-600">Connect</span>
+</span>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center space-x-1 sm:space-x-2">
+<a class="relative px-4 py-2 text-sm font-semibold text-brand-700 bg-brand-50/80 rounded-full transition-colors after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-4 after:h-0.5 after:bg-brand-600 after:rounded-full" href="#explore">
+          Explore
+        </a>
+<a class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 rounded-full transition-all" href="#registrations">
+          My Registrations
+        </a>
+</nav>
+<!-- Student Profile Badge -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-3 p-1.5 pr-3.5 bg-slate-100/90 rounded-full border border-slate-200/60 shadow-sm hover:border-brand-200 transition-colors">
+<img alt="Student Avatar" class="w-8 h-8 rounded-full object-cover ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLgRF4RxUZI_ktQHgaVYf_O1TJar6JDgZHT8T242k94VQL6CarL2FZWlhA_KDbf6zkq3WwVUFOYfBEGOSMY9WPX25XZByUKY0SIT4QL1jheUcM-KRc9bPs9VMmFKKCu2eRhCFQ3N5lzfKpnxW0F33ycFyRF2voPRSdZ2ZwlP86l6EGdpAN8Gj6YZJvO0dzgiFfAZvH9gOgbO73oinupOBAvwqh67TfHugUOVkzE7o4"/>
+<div class="text-left hidden sm:block">
+<div class="text-xs font-semibold text-slate-800 leading-tight">Alex Miller</div>
+<div class="text-[10px] uppercase font-bold tracking-wider text-brand-600 leading-tight">Student</div>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-100 text-brand-800 sm:hidden">
+            Student
+          </span>
+</div>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+<!-- BEGIN: HeroHeadingsSection -->
+<section class="max-w-3xl mb-8" data-purpose="hero-headings">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200/60 mb-3">
+<span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+        Fall Semester Events Live
+      </div>
+<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Find your next <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-600">campus event</span>
+</h1>
+<p class="mt-2 text-base text-slate-500 font-normal">
+        Discover, register, and connect with workshops, competitions, and student meetups across campus.
+      </p>
+</section>
+<!-- END: HeroHeadingsSection -->
+<!-- BEGIN: SearchBarSection -->
+<section class="mb-6" data-purpose="search-bar">
+<div class="relative w-full max-w-4xl shadow-sm rounded-2xl">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<input class="block w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 text-base focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all duration-200" id="event-search" placeholder="Search events, clubs, venues, or topics..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+<kbd class="hidden sm:inline-block px-2 py-1 text-[11px] font-medium text-slate-400 bg-slate-100 border border-slate-200 rounded">⌘K</kbd>
+</div>
+</div>
+</section>
+<!-- END: SearchBarSection -->
+<!-- BEGIN: FilterChipsSection -->
+<section class="mb-10" data-purpose="filter-chips">
+<div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1">
+<!-- Active Filter: All -->
+<button class="px-5 py-2 text-sm font-semibold rounded-full bg-brand-600 text-white shadow-sm shadow-brand-500/20 hover:bg-brand-700 transition" type="button">
+          All
+        </button>
+<!-- Category Filter: AI -->
+<button class="px-5 py-2 text-sm font-medium rounded-full bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/50 transition" type="button">
+          AI
+        </button>
+<!-- Category Filter: Robotics -->
+<button class="px-5 py-2 text-sm font-medium rounded-full bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/50 transition" type="button">
+          Robotics
+        </button>
+<!-- Category Filter: Open Source -->
+<button class="px-5 py-2 text-sm font-medium rounded-full bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/50 transition" type="button">
+          Open Source
+        </button>
+<!-- Additional Suggested Categories -->
+<button class="px-5 py-2 text-sm font-medium rounded-full bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/50 transition" type="button">
+          Design &amp; UI
+        </button>
+<button class="px-5 py-2 text-sm font-medium rounded-full bg-white text-slate-600 border border-slate-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50/50 transition" type="button">
+          Entrepreneurship
+        </button>
+</div>
+</section>
+<!-- END: FilterChipsSection -->
+<!-- BEGIN: EventCardsGrid -->
+<section data-purpose="event-cards-grid">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+<!-- Card 1: AI Build Night -->
+<article class="bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-200 flex flex-col overflow-hidden group">
+<!-- Top Photo & Availability Badge -->
+<div class="relative h-48 w-full overflow-hidden bg-slate-100">
+<img alt="Students collaborating on artificial intelligence projects" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VRW_phdhTAYQkJyjoFBf2-YYpyvY0KTEAJAvIjU23H2VI3H9x76XG4wWYo4lUUH5QKCDP_sh6rTZKWMxiVDl0hQYt7mG8_MilVDRYHhciy15ItIv_r5t_dthcRthVGGSonXuouPnY1NPY_u-3igEc_DT-25Ce3Br9V43bV3O1HunFy2SPy9KksRKclYvIxP_5HHlho80pnWrspfDoUCP6Bbg4laVQGFuzeWrTd7A"/>
+<div class="absolute top-3 right-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm backdrop-blur-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                12 left
+              </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide uppercase bg-black/60 backdrop-blur-md text-white">
+                AI / Machine Learning
+              </span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                AI Build Night
+              </h2>
+<div class="mt-2 space-y-1.5 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Thu, Nov 26 • 6:30 PM - 9:30 PM</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Turing Innovation Hub, Room 302</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 font-medium pt-0.5">
+<svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Hosted by Campus AI Society</span>
+</div>
+</div>
+</div>
+<!-- View Details Action Button -->
+<div class="pt-5 mt-4 border-t border-slate-100">
+<button class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-sm bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm transition" type="button">
+                View details
+              </button>
+</div>
+</div>
+</article>
+<!-- Card 2: Robotics Sprint -->
+<article class="bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-200 flex flex-col overflow-hidden group">
+<!-- Top Photo & Status Badge -->
+<div class="relative h-48 w-full overflow-hidden bg-slate-100">
+<img alt="Autonomous robot testing on competition arena" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFRWgIQQdNuSG5NhVNAvFUN_aK1iTM73kMYzH404NFpKuzMTHNpQxY9zw4ORbaTPngZfUWRrgaC_B1zApDLTio2gO7ZGBmbUIxf9U-F-erhnXAta0temK0XoVzmTF6qU2sCv8AJpURoeUUA0vl5Fu7-6xUUH3KRWHeji-dv9fYVib0JO-WsAAsdAQAmusxY3eSGUlEWhTmVTbLq_qcg7S1O0KE_u-si2ft2ib7b-Yo"/>
+<div class="absolute top-3 right-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200 shadow-sm backdrop-blur-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                CLOSED
+              </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide uppercase bg-black/60 backdrop-blur-md text-white">
+                Hardware &amp; Mechatronics
+              </span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                Robotics Sprint
+              </h2>
+<div class="mt-2 space-y-1.5 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Sat, Nov 28 • 10:00 AM - 5:00 PM</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Engineering Quad, Robotics Arena</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 font-medium pt-0.5">
+<svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Hosted by IEEE Robotics Branch</span>
+</div>
+</div>
+</div>
+<!-- View Details Action Button -->
+<div class="pt-5 mt-4 border-t border-slate-100">
+<button class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-sm bg-brand-50 text-brand-700 hover:bg-brand-100 border border-brand-200 transition" type="button">
+                View details
+              </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Open Source Jam -->
+<article class="bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-200 flex flex-col overflow-hidden group">
+<!-- Top Photo & Availability Badge -->
+<div class="relative h-48 w-full overflow-hidden bg-slate-100">
+<img alt="Hackathon participants coding during open source jam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNXJ20AwWbDZVBxF8_r_8ErtlglB5xMcCdJkYXfnaH7sbwQGlnccLKoXXKfT-_Tvng47UiqEutw64EszotsxsE5Q9CoEVIBJnLJQdJTqoG35-ILAkhMWIOJ7jlzEJdgJAjD8Gdt8PvPw4e1sMKqqab5plWYsEZkkqyvd4fpt3FlWgEH2x7WzOMMmfQcnXsRs8jYC9D4D4nvAl3VDrEDJeb9ALYbtKMkHfzruhRzftg"/>
+<div class="absolute top-3 right-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-sm backdrop-blur-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                100 left
+              </span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide uppercase bg-black/60 backdrop-blur-md text-white">
+                Hackathon / Web
+              </span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-5 flex-1 flex flex-col justify-between">
+<div>
+<h2 class="text-xl font-bold text-slate-900 group-hover:text-brand-600 transition-colors">
+                Open Source Jam
+              </h2>
+<div class="mt-2 space-y-1.5 text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Sun, Dec 01 • 1:00 PM - 8:00 PM</span>
+</div>
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Student Union Hall B</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600 font-medium pt-0.5">
+<svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Hosted by Open Source Club</span>
+</div>
+</div>
+</div>
+<!-- View Details Action Button -->
+<div class="pt-5 mt-4 border-t border-slate-100">
+<button class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-sm bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm transition" type="button">
+                View details
+              </button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- END: EventCardsGrid -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: MainFooter -->
+<footer class="w-full border-t border-slate-200 bg-white mt-auto py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Left: Brand link and copyright -->
+<div class="flex items-center gap-3">
+<a class="font-bold text-slate-900 tracking-tight hover:text-brand-600 transition" href="#">
+            Campus<span class="text-brand-600">Connect</span>
+</a>
+<span class="text-slate-300">•</span>
+<span class="text-xs text-slate-500">
+            Empowering student discovery &amp; engagement
+          </span>
+</div>
+<!-- Right: Campus Links and Policy -->
+<nav class="flex items-center space-x-6 text-xs text-slate-500">
+<a class="hover:text-brand-600 transition" href="#">Club Guidelines</a>
+<a class="hover:text-brand-600 transition" href="#">Host an Event</a>
+<a class="hover:text-brand-600 transition" href="#">Campus Directory</a>
+<a class="hover:text-brand-600 transition" href="#">Privacy &amp; Support</a>
+</nav>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>
